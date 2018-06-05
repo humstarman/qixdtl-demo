@@ -5,4 +5,8 @@ if [ ! -f "$FILE" ]; then
   touch $FILE
   echo 0 > $FILE
 fi
-/app.py -p 8080 --host $HOST_IP --pod $POD_IP
+ARGS=$@
+[ -z "$ARGS" ] && ARGS="-p 8080"
+ARGS+=" --host $HOST_IP --pod $POD_IP"
+echo $ARGS
+/app.py $ARGS 

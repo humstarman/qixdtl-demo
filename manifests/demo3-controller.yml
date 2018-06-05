@@ -21,11 +21,9 @@ spec:
           image: 172.31.78.217:5000/demo:v1
           command:
             - /entrypoint.sh
-            #- /block-chain.py
-            #- -p
-            #- "8080"
-            #- --host
-            #- "$HOST_IP"
+          args:
+            - -p
+            - "8080"
           env:
             - name: HOST_IP
               valueFrom:
@@ -44,6 +42,7 @@ spec:
           volumeMounts:
             - name: gluster-volume
               mountPath: "/mnt"
+              subPath: demo
       volumes:
         - name: gluster-volume
           persistentVolumeClaim:
