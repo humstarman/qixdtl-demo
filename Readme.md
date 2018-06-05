@@ -1,35 +1,9 @@
-1 run
-===
-```console
-docker run -it --rm --network host -v /data:/mnt block-chain /block-chain.py
-```
+## 1 Build docker image
+Build docker image and push it to local registry.
 
-2 add a new transaction 
-===
-```console
-curl -X POST -H "Content-Type: application/json" -d '{
- "sender": "d4ee26eee15148ee92c6cd394edd974e",
- "recipient": "someone-other-address",
- "amount": 5
-}' "http://localhost:6000/transactions/new"
-```
+## 2 Deploy
+Deployment yamls resides in ./manifests directory.  
+Use `kubectl` to deploy.
 
-3 mine
-===
-```console
-curl http://localhost:6000/mine
-```
-
-4 register a node
-===
-```console
-curl -X POST -H "Content-Type: application/json" -d '{
- "nodes": ["http://some-ip:some-port"]
-}' "http://localhost:6000/transactions/new"
-```
-
-5 sync
-===
-```console
-curl http://localhost:6000/nodes/resolve
-```
+## 3 Generate ingress
+Generate ingress to visit the demo. 
