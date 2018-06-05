@@ -6,7 +6,5 @@ if [ ! -f "$FILE" ]; then
   echo 0 > $FILE
 fi
 ARGS=$@
-[ -z "$ARGS" ] && ARGS="-p 8080"
 ARGS+=" --host $HOST_IP --pod $POD_IP"
-echo $ARGS
 /app.py $ARGS 
